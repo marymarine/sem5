@@ -1,41 +1,4 @@
-class Node(object):
-    def __init__(self, data= None, next = None):
-        self.data = data
-        self.next = next
-
-    def set_next(self, newNext):
-        self.next = newNext
-
-class LinkedList(object):
-    def __init__(self, headNode = None):
-        self.headNode = headNode
-        self.length = 0
-
-    def insert_node(self, data):
-        #insert to the end
-        self.length += 1
-        if self.headNode == None:
-            self.headNode = Node(data)
-        else:
-            newNode = Node(data)
-            currNode = self.headNode
-            while currNode.next:
-                currNode = currNode.next
-            currNode.set_next(newNode)
-
-    def print_list(self):
-            currNode = self.headNode
-            while currNode:
-                print(currNode.data, end=' ')
-                currNode = currNode.next
-
-def number_to_list(number):
-    lst = LinkedList()
-    while number != 0:
-        digit = number % 10
-        number //= 10
-        lst.insert_node(digit)
-    return lst
+from task1 import *
 
 def get_sum(first, second):
     lst1 = number_to_list(first)
@@ -68,10 +31,10 @@ def get_sum(first, second):
         currNode = currNode.next
     return sum
 
-#main
-print("Input 2 numbers to add:")
-first = int(input())
-second = int(input())
-sum = get_sum(first, second)
-print("The sum is:")
-sum.print_list()
+if __name__ == '__main__':
+    print("Input 2 numbers to add:")
+    first = input()
+    second = input()
+    sum = get_sum(first, second)
+    print("The sum is:")
+    sum.print_list()

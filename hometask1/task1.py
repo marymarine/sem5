@@ -65,7 +65,7 @@ class LinkedList(object):
     def print_list(self):
         currNode = self.headNode
         while currNode:
-            #print(currNode.data, end=' ')
+            print(currNode.data, end=' ')
             currNode = currNode.next
 
 def number_to_list(number):
@@ -76,21 +76,21 @@ def number_to_list(number):
         lst.insert_node(int(char))
     return lst
 
-#main
-print("Input number:")
-number = input()
-lst = number_to_list(number)
-print("Entered list:")
-lst.print_list()
-print("\nInput digit to search:")
-searchKey = int(input())
-currNode = lst.search_node(searchKey)
-if currNode:
-    print("This value is found")
-else:
-    print("This value is not found")
-print("Input digit to delete:")
-delKey = int(input())
-lst.delete_node(delKey)
-print("New list:")
-lst.print_list()
+if __name__ == '__main__':
+    print("Input number:")
+    number = input()
+    lst = number_to_list(number)
+    print("Entered list:")
+    lst.print_list()
+    print("\nInput digit to search:")
+    searchKey = int(input())
+    currNode = lst.search_node(searchKey)
+    if currNode:
+        print("This value is found")
+    else:
+        print("This value is not found")
+    print("Input digit to delete:")
+    delKey = int(input())
+    lst.delete_node(delKey)
+    print("New list:")
+    lst.print_list()
