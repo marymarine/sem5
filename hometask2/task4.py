@@ -11,12 +11,11 @@ class Graph:
             self.adj_vertices[list_of_edges[i][0]].append(list_of_edges[i][1])
             self.adj_vertices[list_of_edges[i][1]].append(list_of_edges[i][0])
             i += 1
-        self.length = len(self.adj_vertices)
-        self.is_visited = [False]*self.length
+        self.is_visited = [False]*len(self.adj_vertices)
 
     def clean(self):
         """Make all vertices as not visited"""
-        self.is_visited = [False] * self.length
+        self.is_visited = [False]*len(self.adj_vertices)
 
     def dfs(self, vertex):
         """Deapth-first search"""
