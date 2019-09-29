@@ -40,16 +40,10 @@ class Graph:
         for i in range(len(self.adj)):
             #seach not visited node with min dist
             v = -1
-            print("first stage")
             for j in range(len(self.adj)):
-                print("j = ", j, "v = ", v)
-                print("dist(j) = ", dist[j])
-                print("dist(v) = ", dist[v])
                 if not self.is_visited[j] and ( v == -1 or dist[j] < dist[v]):
                     v = j
-                    print("v=j=", v)
             #mark current node visited
-            print(v," is visited")
             self.is_visited[v] = True
             #change dist
             for j in range(len(self.adj[v])):
@@ -69,8 +63,7 @@ class Graph:
         print(*reversed(walk))
         print("distance = ", dist[nodeEnd])
 
-g = Graph([[0,1,7],[0,2,9],[0,5,14],[1,2,10],[1,3,15],[2,3,11],[2,5,2],[3,4,6],[4,5,9]])
-#g = Graph([[0, 3, 5], [1, 3, 11], [2, 3, 56], [4, 3, 77],[5, 4, 89]])
+g = Graph([[0, 3, 5], [1, 3, 11], [2, 3, 56], [4, 3, 77],[5, 4, 89]])
 print("Type start and end vertices:")
 v_start = int(input())
 v_end = int(input())
