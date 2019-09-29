@@ -15,9 +15,10 @@ dictionary = {
     '0': ('_')
 }
 
-#get all combinations
 number = input()
 list_of_digits = list(number)
+
+#get all combinations
 alphabet = []
 for digit in list_of_digits:
     alphabet.append(dictionary[digit])
