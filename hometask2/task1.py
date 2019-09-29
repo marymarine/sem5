@@ -1,11 +1,11 @@
 """Task 1: A string is a repetition of a substring"""
-inputStr = input()
+input_str = input()
 i = 0
-subStr = ''
+substr = ''
 while True:
-    subStr += inputStr[i]
+    substr += input_str[i]
     i += 1
-    k = len(inputStr)//i
-    if subStr*k == inputStr:
+    k = len(input_str)//i
+    if substr*k == input_str:
         break
 print(k)
