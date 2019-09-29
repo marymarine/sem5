@@ -1,5 +1,5 @@
 class Node(object):
-    def __init__(self, data= None, next = None):
+    def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
 
@@ -10,10 +10,10 @@ class Node(object):
         return self.next
 
     def set_next(self, newNext):
-        self.next=newNext
+        self.next = newNext
 
 class LinkedList(object):
-    def __init__(self, headNode = None):
+    def __init__(self, headNode=None):
         self.headNode = headNode
         self.length = 0
 
@@ -56,29 +56,29 @@ class LinkedList(object):
                 preNode = currNode
                 currNode = currNode.get_next()
         if currNode is None:
-                raise ValueError("Data is not found")
+            raise ValueError("Data is not found")
         if preNode is None:
             self.headNode = currNode.get_next()
         else:
             preNode.set_next(currNode.get_next())
 
     def print_list(self):
-            currNode = self.headNode
-            while currNode:
-                print(currNode.data, end=' ')
-                currNode = currNode.next
+        currNode = self.headNode
+        while currNode:
+            #print(currNode.data, end=' ')
+            currNode = currNode.next
 
 def number_to_list(number):
     lst = LinkedList()
-    while number != 0:
-        digit = number % 10
-        number //= 10
-        lst.insert_node(digit)
+    while number != '':
+        char = number[len(number)-1]
+        number = number[0:len(number)-1]
+        lst.insert_node(int(char))
     return lst
 
 #main
 print("Input number:")
-number = int(input())
+number = input()
 lst = number_to_list(number)
 print("Entered list:")
 lst.print_list()
