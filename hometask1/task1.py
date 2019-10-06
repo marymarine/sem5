@@ -1,80 +1,91 @@
+"""Task 1, Program 1"""
 class Node(object):
-    def __init__(self, data=None, next=None):
+    """Describes node of list: data and link to next node"""
+    def __init__(self, data=None, next_node=None):
         self.data = data
-        self.next = next
+        self.next_node = next_node
 
     def get_data(self):
+        """Get data value of node"""
         return self.data
 
     def get_next(self):
-        return self.next
+        """Get next_node of node"""
+        return self.next_node
 
-    def set_next(self, newNext):
-        self.next = newNext
+    def set_next(self, new_next):
+        """Set next_node as new_next"""
+        self.next_node = new_next
 
 class LinkedList(object):
-    def __init__(self, headNode=None):
-        self.headNode = headNode
+    """Describes linked list - a sequence of nodes, started with head_node"""
+    def __init__(self, head_node=None):
+        self.head_node = head_node
         self.length = 0
 
     def insert_node(self, data):
+        """Insert node data to the end of list"""
         #insert to the top
-        #newNode = Node(data)
-        #newNode.set_next(self.headNode)
-        #self.headNode = newNode
+        #new_node = Node(data)
+        #new_node.set_next(self.head_node)
+        #self.head_node = new_node
 
         #insert to the end
         self.length += 1
-        if self.headNode == None:
-            self.headNode = Node(data)
+        if self.head_node is None:
+            self.head_node = Node(data)
         else:
-            newNode = Node(data)
-            currNode = self.headNode
-            while currNode.next:
-                currNode = currNode.next
-            currNode.set_next(newNode)
+            new_node = Node(data)
+            cur_node = self.head_node
+            while cur_node.next_node:
+                cur_node = cur_node.next_node
+            cur_node.set_next(new_node)
 
     def search_node(self, data):
-        currNode = self.headNode
-        isFound = False
-        while(currNode and isFound is False):
-            if currNode.data == data:
-                isFound = True
+        """Search node data in list, return this node"""
+        cur_node = self.head_node
+        is_found = False
+        while cur_node and is_found is False:
+            if cur_node.data == data:
+                is_found = True
             else:
-                currNode = currNode.next
-        return currNode
+                cur_node = cur_node.next_node
+        return cur_node
 
     def delete_node(self, data):
+        """Delete node data from list"""
         #delete the first occurrence of data
-        currNode = self.headNode
-        preNode = None
-        isFound = False
-        while currNode and isFound is False:
-            if currNode.get_data() == data:
-                isFound = True
+        cur_node = self.head_node
+        pre_node = None
+        is_found = False
+        while cur_node and is_found is False:
+            if cur_node.get_data() == data:
+                is_found = True
             else:
-                preNode = currNode
-                currNode = currNode.get_next()
-        if currNode is None:
+                pre_node = cur_node
+                cur_node = cur_node.get_next()
+        if cur_node is None:
             raise ValueError("Data is not found")
-        if preNode is None:
-            self.headNode = currNode.get_next()
+        if pre_node is None:
+            self.head_node = cur_node.get_next()
         else:
-            preNode.set_next(currNode.get_next())
+            pre_node.set_next(cur_node.get_next())
 
     def print_list(self):
-        currNode = self.headNode
-        while currNode:
-            print(currNode.data, end=' ')
-            currNode = currNode.next
+        """Print list as a sequence of data"""
+        cur_node = self.head_node
+        while cur_node:
+            print(cur_node.data, end=' ')
+            cur_node = cur_node.next_node
 
-def number_to_list(number):
-    lst = LinkedList()
-    while number != '':
-        char = number[len(number)-1]
-        number = number[0:len(number)-1]
-        lst.insert_node(int(char))
-    return lst
+def number_to_list(num):
+    """Transform string to list"""
+    num_lst = LinkedList()
+    while num != '':
+        char = num[len(num)-1]
+        num = num[0:len(num)-1]
+        num_lst.insert_node(int(char))
+    return num_lst
 
 if __name__ == '__main__':
     print("Input number:")
@@ -83,14 +94,14 @@ if __name__ == '__main__':
     print("Entered list:")
     lst.print_list()
     print("\nInput digit to search:")
-    searchKey = int(input())
-    currNode = lst.search_node(searchKey)
-    if currNode:
+    search_key = int(input())
+    searched_node = lst.search_node(search_key)
+    if searched_node:
         print("This value is found")
     else:
         print("This value is not found")
     print("Input digit to delete:")
-    delKey = int(input())
-    lst.delete_node(delKey)
+    del_key = int(input())
+    lst.delete_node(del_key)
     print("New list:")
     lst.print_list()
