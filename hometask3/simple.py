@@ -16,9 +16,8 @@ def extract_mfccs(test_dir, res_dir):
             #generate mfccs
             y, sr = librosa.load(path)
             mfcc = librosa.feature.mfcc(y, sr)
-            #save an array to a binary file in .npy format
-            path = os.path.join(res_dir, name[0:-4])
-            np.save(path, mfcc)
+            #save to a binary file in .npy format
+            np.save(res_dir, mfcc)
         else:
             #create directories in the resulting directory
             res_path = os.path.join(res_dir, name)
